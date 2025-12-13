@@ -57,29 +57,41 @@ document.getElementById("divide").onclick = function(){
     mathematicalSymbol = 4
 }
 //then in this function i parse the second operand that the user typed in to a number so i do a mathematical equation
-//after that i search with a switch which operator the user chose to use and i post the results straight into my "result" label and i break the switch after its done
+//after that i search with a switch which operator the user chose to use and i post the results straight into my "result" label and then i reset all my operands and at the end break the switch after its done
+//
 document.getElementById("equal").onclick = function(){
     example = Number(example)
     switch(mathematicalSymbol){
         case 1:
             result.textContent = `result: ` + (firstCoupleOfNumbers - example)
+            firstCoupleOfNumbers=0;
+            example=0;
             break;
         case 2:
             result.textContent = `result: ` + (firstCoupleOfNumbers + example)
+            firstCoupleOfNumbers=0;
+            example=0;
             break;
         case 3:
             result.textContent =  `result: ` + firstCoupleOfNumbers * example
+            firstCoupleOfNumbers=0;
+            example=0;
             break;
         case 4:
             result.textContent = `result: ` + firstCoupleOfNumbers / example
+            if (mathematicalSymbol==4 && example==0){
+            result.textContent = `result: 0`
+            }
+            firstCoupleOfNumbers=0;
+            example=0;
             break;
     }
 }
 //here i reset every variable and print out the default result
 document.getElementById("reset").onclick = function(){
-    example = 0
-    mathematicalSymbol = 0
-    firstCoupleOfNumbers = 0
-    result.textContent = `result: ` + (firstCoupleOfNumbers + example)
-
+    example = 0;
+    mathematicalSymbol = 0;
+    firstCoupleOfNumbers = 0;
+    result.textContent = `result: ` + (firstCoupleOfNumbers + example);
+    
 }
